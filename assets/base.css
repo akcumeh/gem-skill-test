@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    --color-primary: #EE6F4B;
+    --color-text: #424153;
+    --color-background: #ffffff;
+    --color-background-light: #f8f8f8;
+
+    --font-body: 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-heading: 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
+
+    --font-size-body: 16px;
+    --font-size-feature: 20px;
+    --font-size-section: 40px;
+
+    --border-radius: 10px;
+
+    --spacing-xs: 8px;
+    --spacing-sm: 16px;
+    --spacing-md: 24px;
+    --spacing-lg: 40px;
+    --spacing-xl: 60px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: var(--font-size-body);
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--color-text);
+    background: var(--color-background);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    line-height: 1.2;
+    color: #1a1a1a;
+}
+
+h2 {
+    font-size: var(--font-size-section);
+}
+
+h3 {
+    font-size: var(--font-size-feature);
+}
+
+p {
+    font-family: var(--font-body);
+    font-size: var(--font-size-body);
+    font-weight: 400;
+    color: var(--color-text);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-sm);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.btn-primary {
+    background: var(--color-primary);
+    color: #ffffff;
+    padding: 14px 32px;
+    border-radius: var(--border-radius);
+    border: none;
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.btn-full-width {
+    width: 100%;
+    max-width: 600px;
+}
+
+.highlight-text {
+    color: var(--color-primary);
+}
