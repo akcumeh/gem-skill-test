@@ -1,0 +1,232 @@
+<section class="nutrition-stats">
+    <div class="container">
+        <div class="content-wrapper">
+            <div class="text-content">
+                <h2>{{ section.settings.heading }}</h2>
+                <p>{{ section.settings.description }}</p>
+
+                <p class="key-points-label"><strong>Key Points:</strong></p>
+
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-row">
+                            <span class="stat-number">{{ section.settings.stat_1_number }}</span>
+                            <p>{{ section.settings.stat_1_text }}</p>
+                        </div>
+                        <hr class="stat-divider">
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-row">
+                            <span class="stat-number">{{ section.settings.stat_2_number }}</span>
+                            <p>{{ section.settings.stat_2_text }}</p>
+                        </div>
+                        <hr class="stat-divider">
+                    </div>
+                    <div class="stat-item stat-item-last">
+                        <div class="stat-row">
+                            <span class="stat-number">{{ section.settings.stat_3_number }}</span>
+                            <p>{{ section.settings.stat_3_text }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn-primary btn-full-width">{{ section.settings.cta_text }}</button>
+            </div>
+
+            <div class="image-content">
+                <img src="{{ 'dog-img-1.png' | asset_url }}" alt="{{ section.settings.heading }}">
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.nutrition-stats {
+    padding: var(--spacing-xl) var(--spacing-sm);
+    background: var(--color-background-light);
+}
+
+.nutrition-stats .content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.nutrition-stats .text-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.nutrition-stats .text-content h2 {
+    font-size: var(--font-size-section);
+    color: #1a1a1a;
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+}
+
+.nutrition-stats .text-content > p {
+    font-weight: 400;
+    color: var(--color-text);
+    margin-bottom: var(--spacing-md);
+}
+
+.nutrition-stats .key-points-label {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0;
+}
+
+.nutrition-stats .stats {
+    margin-bottom: var(--spacing-lg);
+}
+
+.nutrition-stats .stat-item {
+    margin: 0;
+}
+
+.nutrition-stats .stat-row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: var(--spacing-md);
+    align-items: center;
+    padding: var(--spacing-md) 0;
+}
+
+.nutrition-stats .stat-number {
+    font-size: 48px;
+    font-weight: 700;
+    font-family: var(--font-heading);
+    color: var(--color-primary);
+    line-height: 1;
+}
+
+.nutrition-stats .stat-item p {
+    font-size: var(--font-size-body);
+    font-weight: 400;
+    color: var(--color-text);
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+.nutrition-stats .stat-divider {
+    border: none;
+    border-top: 1px solid #e3e3e8;
+    margin: 0;
+}
+
+.nutrition-stats .stat-item-last .stat-divider {
+    display: none;
+}
+
+.nutrition-stats .image-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nutrition-stats .image-content img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: var(--border-radius);
+}
+
+.nutrition-stats .btn-full-width {
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .nutrition-stats .content-wrapper {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    .nutrition-stats .text-content {
+        order: 2;
+    }
+
+    .nutrition-stats .image-content {
+        order: 1;
+    }
+
+    .nutrition-stats .stat-row {
+        grid-template-columns: 100px 1fr;
+    }
+}
+</style>
+
+{% schema %}
+{
+    "name": "Nutrition Stats",
+    "settings": [
+        {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Nutrition is the foundation for longer, healthier lives in dogs."
+        },
+        {
+            "type": "textarea",
+            "id": "description",
+            "label": "Description",
+            "default": "Invest in your dog's future with our scientifically formulated superfood-powered supplements. Give them the nutrition they deserve and watch them thrive with vitality, energy, and the joy of a longer, healthier life."
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+        },
+        {
+            "type": "text",
+            "id": "stat_1_number",
+            "label": "Stat 1 Number",
+            "default": "97%"
+        },
+        {
+            "type": "text",
+            "id": "stat_1_text",
+            "label": "Stat 1 Text",
+            "default": "Dogs choose our dog food over leading brands because of its real functional ingredients and delicious flavor."
+        },
+        {
+            "type": "text",
+            "id": "stat_2_number",
+            "label": "Stat 2 Number",
+            "default": "84%"
+        },
+        {
+            "type": "text",
+            "id": "stat_2_text",
+            "label": "Stat 2 Text",
+            "default": "Our dog food provides superior nutrition and a patented probiotic for optimal nutrient absorption."
+        },
+        {
+            "type": "text",
+            "id": "stat_3_number",
+            "label": "Stat 3 Number",
+            "default": "92%"
+        },
+        {
+            "type": "text",
+            "id": "stat_3_text",
+            "label": "Stat 3 Text",
+            "default": "Our dog food's high protein and fat digestibility contribute to ideal stool quality."
+        },
+        {
+            "type": "text",
+            "id": "cta_text",
+            "label": "CTA Button Text",
+            "default": "Give your furry friend the gift of wholesome nutrition"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Nutrition Stats"
+        }
+    ]
+}
+{% endschema %}

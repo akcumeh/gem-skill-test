@@ -1,0 +1,154 @@
+<section class="text-image-split {{ section.settings.layout }}">
+    <div class="container">
+        <div class="content-wrapper">
+            <div class="image-content">
+                {% if section.settings.asset_image != blank %}
+                    <img src="{{ section.settings.asset_image | asset_url }}" alt="{{ section.settings.heading }}">
+                {% elsif section.settings.image != blank %}
+                    <img src="{{ section.settings.image | img_url: '800x600' }}" alt="{{ section.settings.heading }}">
+                {% endif %}
+            </div>
+
+            <div class="text-content">
+                <h2>{{ section.settings.heading }}</h2>
+                <p>{{ section.settings.description }}</p>
+
+                {% if section.settings.show_cta %}
+                    <button class="btn-primary">{{ section.settings.cta_text }}</button>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.text-image-split {
+    padding: var(--spacing-xl) var(--spacing-sm);
+    background: var(--color-background);
+}
+
+.text-image-split .content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.text-image-split .text-content h2 {
+    font-size: var(--font-size-section);
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: var(--spacing-md);
+}
+
+.text-image-split .text-content p {
+    font-size: var(--font-size-body);
+    font-weight: 400;
+    color: var(--color-text);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-md);
+}
+
+.text-image-split .image-content img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+}
+
+.text-image-split.image-left .image-content {
+    order: 1;
+}
+
+.text-image-split.image-left .text-content {
+    order: 2;
+}
+
+.text-image-split.image-right .image-content {
+    order: 2;
+}
+
+.text-image-split.image-right .text-content {
+    order: 1;
+}
+
+@media (max-width: 768px) {
+    .text-image-split .content-wrapper {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    .text-image-split .image-content {
+        order: 1 !important;
+    }
+
+    .text-image-split .text-content {
+        order: 2 !important;
+    }
+}
+</style>
+
+{% schema %}
+{
+    "name": "Text Image Split",
+    "settings": [
+        {
+            "type": "select",
+            "id": "layout",
+            "label": "Layout",
+            "options": [
+                {
+                    "value": "image-left",
+                    "label": "Image Left"
+                },
+                {
+                    "value": "image-right",
+                    "label": "Image Right"
+                }
+            ],
+            "default": "image-left"
+        },
+        {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Improve overall gastrointestinal health for better nutrient absorption"
+        },
+        {
+            "type": "textarea",
+            "id": "description",
+            "label": "Description",
+            "default": "Through rigorous scientific studies and consultations with veterinarians, we have created a breakthrough formula exclusively tailored to combat the health challenges prevalent in dogs."
+        },
+        {
+            "type": "text",
+            "id": "asset_image",
+            "label": "Asset Image Filename (e.g., dog-img-1.png)",
+            "info": "If provided, this will be used instead of the image picker"
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image (alternative to asset)"
+        },
+        {
+            "type": "checkbox",
+            "id": "show_cta",
+            "label": "Show CTA Button",
+            "default": false
+        },
+        {
+            "type": "text",
+            "id": "cta_text",
+            "label": "CTA Button Text",
+            "default": "Learn More"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Text Image Split"
+        }
+    ]
+}
+{% endschema %}
