@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page_title }}</title>
-    
+
     {{ content_for_header }}
-    
+
     <link rel="stylesheet" href="{{ 'base.css' | asset_url }}">
 </head>
 <body>
     {{ content_for_layout }}
-    
+
     <script src="{{ 'theme.js' | asset_url }}"></script>
 </body>
 </html>

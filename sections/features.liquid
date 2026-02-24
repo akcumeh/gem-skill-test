@@ -12,7 +12,18 @@
             </div>
 
             <div class="center-image">
-                <img src="{{ 'section-1-img.png' | asset_url }}" alt="Product">
+                <div class="before-after-slider" data-before-after>
+                    <div class="before-image">
+                        <img src="{{ 'before.png' | asset_url }}" alt="Before">
+                    </div>
+                    <div class="after-image">
+                        <img src="{{ 'after.png' | asset_url }}" alt="After">
+                    </div>
+                    <input type="range" min="0" max="100" value="50" class="slider-handle" data-slider-handle>
+                    <div class="slider-line" data-slider-line>
+                        <div class="slider-button"></div>
+                    </div>
+                </div>
             </div>
 
             <div class="benefit-card">
@@ -91,6 +102,97 @@
 .center-image img {
     max-width: 300px;
     border-radius: 50%;
+}
+
+.before-after-slider {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+}
+
+.before-image,
+.after-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.before-image {
+    position: relative;
+}
+
+.before-image img,
+.after-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 0;
+}
+
+.after-image {
+    clip-path: inset(0 0 0 50%);
+}
+
+.slider-handle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: ew-resize;
+    z-index: 3;
+}
+
+.slider-line {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 100%;
+    background: var(--color-primary);
+    transform: translateX(-50%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.slider-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    background: white;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.slider-button::before,
+.slider-button::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.slider-button::before {
+    left: 8px;
+    border-width: 6px 8px 6px 0;
+    border-color: transparent var(--color-primary) transparent transparent;
+}
+
+.slider-button::after {
+    right: 8px;
+    border-width: 6px 0 6px 8px;
+    border-color: transparent transparent transparent var(--color-primary);
 }
 
 .benefit-card {
@@ -178,20 +280,59 @@
     width: auto;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 640px) {
+    .hero-benefits h2 {
+        width: 100%;
+        margin-bottom: var(--spacing-lg);
+    }
+
     .benefits-grid {
         grid-template-columns: 1fr;
         grid-template-rows: auto;
         gap: var(--spacing-md);
+        display: flex;
+        flex-direction: column;
     }
 
     .center-image {
-        grid-row: auto;
-        grid-column: auto;
+        order: 1;
+        margin: 0 auto;
     }
 
-    .center-image img {
-        max-width: 250px;
+    .benefit-card:nth-of-type(1) {
+        order: 2;
+    }
+
+    .benefit-card:nth-of-type(2) {
+        order: 3;
+    }
+
+    .benefit-card:nth-of-type(3) {
+        order: 4;
+    }
+
+    .benefit-card:nth-of-type(4) {
+        order: 5;
+    }
+
+    .benefit-card:nth-of-type(5) {
+        order: 6;
+    }
+
+    .before-after-slider {
+        width: 300px;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    .benefit-card {
+        text-align: center;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .benefit-content {
+        text-align: center;
     }
 }
 </style>
